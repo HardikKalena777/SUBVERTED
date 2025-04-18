@@ -42,6 +42,8 @@ public class InputManager : MonoBehaviour
     public void HandleAllInputs()
     {
         HandleMovementInput();
+        HandleWalkInput();
+        HandleJogInput();
         HandleRunInput();
         HandleJumpInput();
     }
@@ -52,7 +54,31 @@ public class InputManager : MonoBehaviour
         horizontalInput = movementInput.x;
         moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
 
-        animationManager.UpdateAnimatorValues(0, moveAmount, playerLocomotion.isRunning);
+        animationManager.UpdateAnimatorValues(0, moveAmount, playerLocomotion.isRunning,playerLocomotion.isJogging,playerLocomotion.isWalking);
+    }
+
+    private void HandleWalkInput()
+    {
+        if(!playerLocomotion.allowJog && moveAmount > 0)
+        {
+            playerLocomotion.isWalking = true;
+        }
+        else
+        {
+            playerLocomotion.isWalking = false;
+        }
+    }
+
+    private void HandleJogInput()
+    {
+        if(playerLocomotion.allowJog && moveAmount > 0.5f && !playerLocomotion.isRunning)
+        {
+            playerLocomotion.isJogging = true;
+        }
+        else
+        {
+            playerLocomotion.isJogging = false;
+        }
     }
 
     private void HandleRunInput()

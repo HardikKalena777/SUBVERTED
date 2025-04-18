@@ -25,6 +25,9 @@ public class PlayerLocomotion : MonoBehaviour
     public bool isRunning;
     public bool isGrounded;
     public bool isJumping;
+    public bool allowJog;
+    public bool isJogging;
+    public bool isWalking;
 
     [Header("Movement Speeds"),Space(5)]
     public float walkSpeed = 1.5f;
@@ -65,13 +68,13 @@ public class PlayerLocomotion : MonoBehaviour
         moveDirection.Normalize();
         moveDirection.y = 0;
 
-        if(isRunning)
+        if(isRunning && allowJog)
         {
             moveDirection = moveDirection * runSpeed;
         }
         else
         {
-            if(inputManager.moveAmount > 0.5f)
+            if(inputManager.moveAmount > 0.5f && allowJog)
             {
                 moveDirection = moveDirection * jogSpeed;
             }
