@@ -49011,6 +49011,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7081165924923435628, guid: b9eeba0bea7807e45b7826724da4c8d1, type: 3}
+      propertyPath: allowJog
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7245497293900205232, guid: b9eeba0bea7807e45b7826724da4c8d1, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7245497293900205232, guid: b9eeba0bea7807e45b7826724da4c8d1, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
